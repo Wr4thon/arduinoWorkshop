@@ -1,0 +1,6 @@
+{
+  "terminal.integrated.env.linux": {
+    "PATH": "/home/joko/.platformio/penv/bin:/home/joko/.platformio/penv:/home/joko/.nvm/versions/node/v8.15.1/bin:/opt/chrome-linux:/opt/firefox:/opt/thunderbird:/opt/eagle:/home/joko/go/src/k8s.io/client-go:/opt/eclipse/java-2018-12/eclipse/:/home/joko/go/bin:/home/joko/go:/opt/ngrok:/opt/rider/bin:/opt/idea/bin:/opt/robo3t/bin/:/home/joko/.local/bin:/opt/gradle/gradle-5.2.1/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/joko/.dotnet/tools:/usr/local/go/bin:/home/joko/go/bin:/usr/local/go/bin:/opt/gradle/gradle-5.5/bin:/home/joko/.kube/scripts:/usr/scripts",
+    "PLATFORMIO_CALLER": "vscode"
+  }
+}
