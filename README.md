@@ -8,6 +8,10 @@ The code for the presentation linked to below.
 
 The Presentation can be found in [this](https://github.com/Wr4thon/arduinoWorkshop-Talk) repository
 
+## The Board
+
+The Board (layout) for the example codes can be found [here](https://easyeda.com/Wr4thon/hacktoberfest)
+
 ## The Projects
 
 ### [Blink](https://github.com/Wr4thon/arduinoWorkshop/blob/master/src/001_blink/main.cpp)

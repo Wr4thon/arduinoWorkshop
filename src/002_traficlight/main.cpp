@@ -1,6 +1,6 @@
 #include <sketch.h>
 
-class blink : public sketch
+class traficlight : public sketch
 {
 public:
   void setup(void)
