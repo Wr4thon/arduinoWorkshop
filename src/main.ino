@@ -9,16 +9,14 @@ struct cycleTemplate
   uint8_t mainPin;
   uint8_t *flashPins;
   uint8_t flashPinsAmount;
-  String name;
 
-  cycleTemplate(uint8_t mP, uint8_t *fP, uint8_t fPA, String n)
+  cycleTemplate(uint8_t mP, uint8_t *fP, uint8_t fPA)
   {
     mainPin = mP;
     flashPins = fP;
     flashPinsAmount = fPA;
-    name = n;
   }
-} cT0(LED_GREEN, c1, 1, "GREEN"), cT1(LED_YELLOW, c2, 2, "YELLOW"), cT2(LED_RED, c3, 1, "RED");
+} cT0(LED_GREEN, c1, 1), cT1(LED_YELLOW, c2, 2), cT2(LED_RED, c3, 1);
 
 cycleTemplate *cycles[3];
 uint8_t c = - 1;
@@ -26,8 +24,6 @@ uint8_t turns = 3;
 
 void setup()
 {
-  Serial.begin(9600);
-  
   pinMode(LED_GREEN, OUTPUT);
   pinMode(LED_YELLOW, OUTPUT);
   pinMode(LED_RED, OUTPUT);
@@ -56,11 +52,7 @@ unsigned long getDelay()
 
 void cycle(cycleTemplate *ct)
 {
-  Serial.print(ct->name);
-  Serial.println(" UP");
   up(ct->mainPin);
-  Serial.print(ct->name);
-  Serial.println(" DOWN");
   down(ct->mainPin);
   flash(ct->flashPins, ct->flashPinsAmount);
 }
@@ -70,30 +62,12 @@ void flash(uint8_t *pins, uint8_t amount, uint8_t level)
   for (int i = 0; i < amount; i++)
   {
     uint8_t pin = pins[i];
-    Serial.print(pin);
-    Serial.print(" ");
-    Serial.print(level);
     digitalWrite(pin, level);
-    Serial.print(" ");
   }
-  
-  Serial.println();
 }
 
 void flash(uint8_t *pins, uint8_t amount)
 {
-  Serial.print("flash '");
-  Serial.print(amount);
-  Serial.print("' pins - ");
-  Serial.print(pins[0]);
-
-  if(amount == 2) {
-    Serial.print(" and ");
-    Serial.print(pins[1]);
-  }
-
-  Serial.println();
-
   for (int i = 0; i < 2; i++)
   {
     flash(pins, amount, HIGH);
