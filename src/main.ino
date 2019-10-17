@@ -18,9 +18,9 @@ struct cycleTemplate
   }
 } cT0(LED_GREEN, c1, 1), cT1(LED_YELLOW, c2, 2), cT2(LED_RED, c3, 1);
 
-cycleTemplate *cycles[3];
-uint8_t c = - 1;
-uint8_t turns = 3;
+const uint8_t turns = 3;
+uint8_t c = -1;
+cycleTemplate *cycles[turns] = {&cT0, &cT1, &cT2};
 
 void setup()
 {
@@ -29,10 +29,6 @@ void setup()
   pinMode(LED_RED, OUTPUT);
   pinMode(LED_DUAL_GREEN, OUTPUT);
   pinMode(LED_DUAL_RED, OUTPUT);
-
-  cycles[0] = &cT0;
-  cycles[1] = &cT1;
-  cycles[2] = &cT2;
 }
 
 void loop(void)
