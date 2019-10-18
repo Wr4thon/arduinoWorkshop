@@ -1,6 +1,6 @@
-#include <004_breathing/main.cpp>
+#include <004_trafficlight/main.cpp>
 
-sketch *s = new breathing();
+sketch *s = new main();
 
 void setup()
 {

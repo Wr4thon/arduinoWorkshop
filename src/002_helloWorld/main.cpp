@@ -1,6 +1,6 @@
 #include <sketch.h>
 
-class traficlight : public sketch
+class main : public sketch
 {
 public:
   void setup(void)

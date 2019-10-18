@@ -1,16 +1,18 @@
 #include <sketch.h>
 
-class blink : public sketch
+class main : public sketch
 {
 public:
   void setup()
   {
-    Serial.begin(SERIAL_SPEED);
+    pinMode(LED_BUILTIN, OUTPUT);
   }
 
   void loop()
   {
-    Serial.println("Hello World!");
-    delay(1000);
+    digitalWrite(LED_BUILTIN, HIGH);
+    delay(500);
+    digitalWrite(LED_BUILTIN, LOW);
+    delay(500);
   }
 };

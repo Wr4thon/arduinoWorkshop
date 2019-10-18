@@ -15,7 +15,7 @@ struct cycleTemplate
 };
 
 
-class breathing : public sketch
+class main : public sketch
 {
 private:
   const uint8_t turns = 3;
@@ -32,7 +32,6 @@ private:
 public:
   void setup()
   {
-    Serial.begin(9600);
     pinMode(LED_GREEN, OUTPUT);
     pinMode(LED_YELLOW, OUTPUT);
     pinMode(LED_RED, OUTPUT);
@@ -53,11 +52,7 @@ public:
 
   unsigned long getDelay()
   {
-    uint32_t val = analogRead(PHOTO);
-
-    Serial.println(val);
-
-    return map(val, 1023, 400, 2, 20);
+    return map(analogRead(POT), 1023, 400, 2, 20);
   }
 
   void cycle(cycleTemplate *ct)
