@@ -2,4 +2,4 @@
 
 #include <pinnames.h>
 
-const int SERIAL_SPEED = 115200;
+const unsigned long SERIAL_SPEED = 115200;
