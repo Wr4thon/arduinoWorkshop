@@ -2,12 +2,6 @@
   "folders": [
     {
       "path": "vscode"
-    },
-    {
-      "path": "vscode-docs"
-    },
-    {
-      "path": "vscode-generator-code"
     }
   ],
   "settings": {
