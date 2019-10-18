@@ -1,73 +1,83 @@
-#include <consts.h>
+#include <sketch.h>
 
 #include <ClickEncoder.h>
 #include <TimerOne.h>
 
-int16_t oldEncPos, encPos;
-uint8_t buttonState;
-
-static ClickEncoder *encoder = new ClickEncoder(ENC_A, ENC_B, ENC_BTN, ENC_STEPS);
-
-static void timerIsr()
+class enc : public sketch
 {
-  encoder->service();
-}
+private:
+  int16_t oldEncPos, encPos;
+  uint8_t buttonState;
 
-void setup()
-{
-  Serial.begin(SERIAL_SPEED);
+  static ClickEncoder *encoder;
 
-  Timer1.initialize(1000);
-  Timer1.attachInterrupt(timerIsr);
-
-  encoder->setAccelerationEnabled(true);
-
-  Serial.print("Acceleration is ");
-  Serial.println((encoder->getAccelerationEnabled()) ? "enabled" : "disabled");
-
-  oldEncPos = -1;
-}
-
-void loop()
-{
-
-  encPos += encoder->getValue();
-
-  if (encPos != oldEncPos)
+  static void StaticConstructor()
   {
-    oldEncPos = encPos;
-    Serial.print("Encoder Value: ");
-    Serial.println(encPos);
+    enc::encoder = new ClickEncoder(ENC_A, ENC_B, ENC_BTN, ENC_STEPS);
   }
 
-  buttonState = encoder->getButton();
-
-  if (buttonState != 0)
+  static void timerIsr()
   {
-    Serial.print("Button: ");
-    Serial.println(buttonState);
-    switch (buttonState)
+    enc::encoder->service();
+  }
+
+public:
+  void setup(void)
+  {
+    Serial.begin(9600);
+
+    Timer1.initialize(1000);
+    Timer1.attachInterrupt(enc::timerIsr);
+
+    enc::encoder->setAccelerationEnabled(true);
+
+    Serial.print("Acceleration is ");
+    Serial.println((enc::encoder->getAccelerationEnabled()) ? "enabled" : "disabled");
+
+    oldEncPos = -1;
+  }
+
+  void loop(void)
+  {
+
+    encPos += enc::encoder->getValue();
+
+    if (encPos != oldEncPos)
     {
-    case ClickEncoder::Open: //0
-      break;
+      oldEncPos = encPos;
+      Serial.print("Encoder Value: ");
+      Serial.println(encPos);
+    }
 
-    case ClickEncoder::Closed: //1
-      break;
+    buttonState = enc::encoder->getButton();
 
-    case ClickEncoder::Pressed: //2
-      break;
+    if (buttonState != 0)
+    {
+      Serial.print("Button: ");
+      Serial.println(buttonState);
+      switch (buttonState)
+      {
+      case ClickEncoder::Open: //0
+        break;
 
-    case ClickEncoder::Held: //3
-      break;
+      case ClickEncoder::Closed: //1
+        break;
 
-    case ClickEncoder::Released: //4
-      break;
+      case ClickEncoder::Pressed: //2
+        break;
 
-    case ClickEncoder::Clicked: //5
-      break;
+      case ClickEncoder::Held: //3
+        break;
 
-    case ClickEncoder::DoubleClicked: //6
-      break;
+      case ClickEncoder::Released: //4
+        break;
+
+      case ClickEncoder::Clicked: //5
+        break;
+
+      case ClickEncoder::DoubleClicked: //6
+        break;
+      }
     }
   }
-}
+};

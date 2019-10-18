@@ -1,12 +1,16 @@
-#include <consts.h>
+#include <sketch.h>
 
-void setup(void)
+class traficlight : public sketch
 {
-  Serial.begin(SERIAL_SPEED);
-}
+public:
+  void setup(void)
+  {
+    Serial.begin(SERIAL_SPEED);
+  }
 
-void loop(void)
-{
-  Serial.println("Hello World!");
-  delay(1000);
-}
+  void loop(void)
+  {
+    Serial.println("Hello World!");
+    delay(1000);
+  }
+};

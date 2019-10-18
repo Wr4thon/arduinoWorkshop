@@ -1,13 +1,16 @@
-#include <consts.h>
+#include <sketch.h>
 
-
-void setup()
+class blink : public sketch
 {
-  Serial.begin(SERIAL_SPEED);
-}
+public:
+  void setup()
+  {
+    Serial.begin(SERIAL_SPEED);
+  }
 
-void loop()
-{
-  Serial.println("Hello World!");
-  delay(1000);
-}
+  void loop()
+  {
+    Serial.println("Hello World!");
+    delay(1000);
+  }
+};
