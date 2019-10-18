@@ -1,11 +1,11 @@
 #include <consts.h>
 
-void setup(void)
+void setup()
 {
   Serial.begin(SERIAL_SPEED);
 }
 
-void loop(void)
+void loop()
 {
   Serial.println("Hello World!");
   delay(1000);
