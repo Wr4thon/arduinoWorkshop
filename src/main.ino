@@ -24,6 +24,7 @@ cycleTemplate *cycles[turns] = {&cT0, &cT1, &cT2};
 
 void setup()
 {
+  Serial.begin(9600);
   pinMode(LED_GREEN, OUTPUT);
   pinMode(LED_YELLOW, OUTPUT);
   pinMode(LED_RED, OUTPUT);
@@ -43,7 +44,11 @@ void loop(void)
 
 unsigned long getDelay()
 {
-  return map(analogRead(POT), 0, 1023, 2, 20);
+  uint32_t val = analogRead(PHOTO);
+
+  Serial.println(val);
+
+  return map(val, 1023, 400, 2, 20);
 }
 
 void cycle(cycleTemplate *ct)
