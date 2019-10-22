@@ -8,7 +8,10 @@
 #include <008_nightRider.h>
 #include <009_nightRiderColored.h>
 
-sketch **s = new sketch*[9]{
+const int sketchAmount = 9;
+int currentSketch = 0;
+
+sketch **sketches = new sketch*[sketchAmount]{
   new blink(),
   new helloWorld(),
   new trafficLightSimple(),
@@ -22,10 +25,25 @@ sketch **s = new sketch*[9]{
 
 void setup()
 {
-  s[7]->setup();
+  Serial.begin(SERIAL_SPEED);
+  currentSketch = 0;
+  sketches[currentSketch]->setup();
 }
 
 void loop()
 {
-  s[7]->loop();
+  if(Serial.available()){
+    String s = Serial.readString();
+    char *cs = new char[s.length()];
+    s.toCharArray(cs, s.length());
+
+    int sketchId = atoi(cs);
+    if (sketchId < sketchAmount && sketchId > 0) {
+      currentSketch = sketchId;
+    }
+    
+    sketches[currentSketch]->setup();
+  }
+
+  sketches[currentSketch]->loop();
 }
