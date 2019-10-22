@@ -1,27 +1,19 @@
-#include <sketch.h>
-#include <Adafruit_NeoPixel.h>
+#include <007_neoPixel.h>
 
-class main : public sketch
+void neoPixel::setup()
 {
-private:
-  Adafruit_NeoPixel *pixels;
+  pixels = new Adafruit_NeoPixel(10, 13, NEO_GRB + NEO_KHZ800);
+  pixels->begin();
+}
 
-public:
-  void setup()
+void neoPixel::loop()
+{
+  pixels->clear();
+
+  for (int i = 0; i < 10; i++)
   {
-    pixels = new Adafruit_NeoPixel(10, 13, NEO_GRB + NEO_KHZ800);
-    pixels->begin();
+    pixels->setPixelColor(i, pixels->Color(0, 150, 0));
+    pixels->show();
+    delay(500);
   }
-
-  void loop()
-  {
-    pixels->clear();
-
-    for (int i = 0; i < 10; i++)
-    {
-      pixels->setPixelColor(i, pixels->Color(0, 150, 0));
-      pixels->show();
-      delay(500);
-    }
-  }
-};
+}

@@ -1,18 +1,14 @@
-#include <sketch.h>
+#include <001_blink.h>
 
-class main : public sketch
+void blink::setup()
 {
-public:
-  void setup()
-  {
-    pinMode(LED_BUILTIN, OUTPUT);
-  }
+  pinMode(LED_BUILTIN, OUTPUT);
+}
 
-  void loop()
-  {
-    digitalWrite(LED_BUILTIN, HIGH);
-    delay(500);
-    digitalWrite(LED_BUILTIN, LOW);
-    delay(500);
-  }
-};
+void blink::loop()
+{
+  digitalWrite(LED_BUILTIN, HIGH);
+  delay(500);
+  digitalWrite(LED_BUILTIN, LOW);
+  delay(500);
+}

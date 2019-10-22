@@ -1,16 +1,12 @@
-#include <sketch.h>
+#include <002_helloWorld.h>
 
-class main : public sketch
+void helloWorld::setup(void)
 {
-public:
-  void setup(void)
-  {
-    Serial.begin(SERIAL_SPEED);
-  }
+  Serial.begin(SERIAL_SPEED);
+}
 
-  void loop(void)
-  {
-    Serial.println("Hello World!");
-    delay(1000);
-  }
-};
+void helloWorld::loop(void)
+{
+  Serial.println("Hello World!");
+  delay(1000);
+}

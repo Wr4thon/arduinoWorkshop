@@ -1,5 +1,4 @@
 #pragma once
-
 #include <sketch.h>
 
 struct lightState
@@ -25,4 +24,17 @@ struct trafficLightCycle
     amountLeds = amount;
     delay = d;
   }
+};
+
+class trafficLightAdvanced : public sketch
+{
+private:
+  trafficLightCycle *fullCycle;
+  uint8_t cycleCurrentStep;
+  uint8_t cycleStepsAmount;
+  void applyCycle(trafficLightCycle cycle);
+  void setLightState(lightState state);
+public:
+  void setup(void);
+  void loop(void);
 };
